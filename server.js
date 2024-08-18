@@ -30,13 +30,13 @@ process.on('unhandledRejection', err => {
 });
 
 // Handle SIGTERM signal (e.g., from Kubernetes or Heroku)
-process.on('SIGTERM', () => {
-    console.log('SIGTERM RECEIVED. Shutting down gracefully...');
-    server.close(async () => {
-        await mongoose.disconnect();
-        console.log('💥 Process terminated!');
-    });
-});
+// process.on('SIGTERM', () => {
+//     console.log('SIGTERM RECEIVED. Shutting down gracefully...');
+//     server.close(async () => {
+//         await mongoose.disconnect();
+//         console.log('💥 Process terminated!');
+//     });
+// });
 
 // Handle SIGINT signal (e.g., Ctrl+C in terminal)
 process.on('SIGINT', () => {
