@@ -59,7 +59,7 @@ const login = catchAsync(async (req, res, next) => {
     if (!user || !(await user.correctPassword(password, user.password)))
         return next(new AppError('Incorrect email or password', 401));
 
-    // if (!user.active) return next(new AppError('User inactive', 403));
+    if (!user.active) return next(new AppError('User inactive', 403));
 
     createToken(user, 200, res);
 });
