@@ -11,6 +11,7 @@ const movieSchema = new mongoose.Schema({
         required: [true, 'A url is required to stream the movie'],
     },
     uploadedBy: String,
+    description: String,
     hide: { type: Boolean, default: false },
 });
 
