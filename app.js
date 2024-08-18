@@ -33,6 +33,8 @@ const limiter = rateLimit({
     message: 'Too many requests from this IP, please try again in an hour!',
 });
 
+app.set('trust proxy', true);
+
 app.use(cors(corsOptions));
 
 app.use('/api', limiter);
