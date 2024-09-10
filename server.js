@@ -24,7 +24,8 @@ const server = app.listen(port, async () => {
 process.on('unhandledRejection', err => {
     console.log(err.name, err.message);
     // best practice: gracefully shutdown
-    server.close(() => {
+    server.close(async () => {
+        await mongoose.disconnect();
         process.exit(1);
     });
 });
@@ -35,6 +36,7 @@ process.on('SIGTERM', () => {
     server.close(async () => {
         await mongoose.disconnect();
         console.log('💥 Process terminated!');
+        process.exit(0);
     });
 });
 
